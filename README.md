@@ -23,10 +23,34 @@ Program to implement univariate Linear Regression to fit a straight line using l
 Developed by: 
 RegisterNumber:  
 */
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+df=pd.read_csv('/content/ML - Sheet1.csv')
+df.head(10)
+plt.scatter(df['x'],df['y'])
+plt.xlabel('x')
+plt.ylabel('y')
+x=df.iloc[:,0:1]
+y=df.iloc[:,-1]
+y
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=0)
+y_train
+from sklearn.linear_model import LinearRegression
+lr=LinearRegression()
+lr.fit(x_train,y_train)
+x_train
+y_train
+lr.predict(x_test.iloc[0].values.reshape(1,1))
+plt.scatter(df['x'],df['y'])
+plt.xlabel('x')
+plt.ylabel('y')
+plt.plot(x_train,lr.predict(x_train),color='red')
 ```
 
 ## Output:
-![best fit line](sam.png)
+![image](https://github.com/SanjithaBolisetti/Find-the-best-fit-line-using-Least-Squares-Method/assets/119393633/b7ccd85a-b517-46c5-bdd4-0c318e9a17e4)
 
 
 ## Result:
